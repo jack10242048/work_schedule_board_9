@@ -1,0 +1,110 @@
+<!DOCTYPE html> 
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule Board</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.css" rel="stylesheet">
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js'></script>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#4c68af">
+</head>
+<body>
+
+    <!-- 新增事件視窗 -->
+    <div id="eventModal" class="modal">
+        <div class="modal_content">
+            <h3>新增事件</h3>
+
+            <label>開始日期</label>
+            <input type="date" id="startDate">
+
+            <label>結束日期</label>
+            <input type="date" id="endDate"> 
+
+            <label>工作內容</label>
+            <textarea id="eventContent" rows="5" cols="50"></textarea>
+
+            <div class="modal_buttons">
+                <button id="saveEvent">儲存</button>
+                <button id="closeModal">取消</button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- 修改事件視窗 -->
+    <div id="editModal" class="modal">
+        <div class="modal_content">
+            <h3>修改事件</h3>
+
+            <label>開始日期</label>
+            <input type="date" id="editStartDate">
+
+            <label>結束日期</label>
+            <input type="date" id="editEndDate">
+
+            <label>工作內容</label>
+            <textarea id="editEventContent" rows="5" cols="50"></textarea>
+
+            <div class="modal_buttons">
+                <button id="saveEditEvent">儲存修改</button>
+                <button id="closeEditModal">取消</button>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="main_container">
+        <div class="picture_area">
+
+
+
+            <p>工作排定表</p>
+            <div class="time_display" id="timeDisplay"></div>
+            
+            <div class="schedule_container">
+                <div class="schedule_item">
+                    <div class="schedule_item_startData"><label>開始日期</label></div>
+                    <div class="schedule_item_endData"><label>結束日期</label></div>
+                    <div class="schedule_item_event"><label>工作內容</label></div>
+                </div>
+            </div>
+        </div>
+
+        
+
+
+        <div class="button_container">
+            <button id="addEventBtn">新增工作</button>
+            <button id="capture" onclick="capture()">截圖</button>
+            <button id="exportCSVBtn">匯出 CSV</button>
+
+            <a href="completed_events/completed_events_page.html" target="_blank">
+                <button>檢視已完成工作</button>
+            </a>
+            
+        </div>
+    </div> 
+
+    <div id="loadingOverlay">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Calendar position -->
+    <div id="calendar"></div>
+
+    <script type="module" src="script.js"></script>
+
+    <script>
+    if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("service-worker.js")
+    }
+    </script>
+    
+</body>
+</html>

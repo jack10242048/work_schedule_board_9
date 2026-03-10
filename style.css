@@ -1,0 +1,279 @@
+body{  
+    display:flex;
+    justify-content:center;
+    background:#f5f7fb;
+    font-family:"Microsoft JhengHei",sans-serif;
+}
+
+/* 主容器 */
+.main_container{
+    width:50%;
+    background:white;
+    padding:10px;
+    border-radius:12px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.1);
+
+}
+
+/* 截圖區域 */
+.picture_area{
+    display:flex;
+    flex-direction:column;
+    padding:10px;
+}
+
+/* 標題 */
+p{
+    font-size:32px;
+    text-align:center;
+    margin-bottom:10px;
+}
+ 
+/* 日程區 */
+.schedule_container{
+    display:flex;
+    flex-direction:column;
+
+    padding:10px;
+
+    min-height:50px;
+    border-radius:10px;
+    background:#f0f4ff;
+    border:1px solid #dbe2ff;
+
+}
+
+/* 單個事件 */
+.schedule_item{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:10px;
+    margin-bottom:10px;
+    background:#fafafa;
+    border-radius:10px;
+    border:1px solid #e0e0e0;
+}
+
+/* 事件開始時間 */
+.schedule_item_startData{
+    /*width:15%;*/
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    min-width:100px;
+    min-height:50px;
+    padding:6px;
+    border-radius:6px;
+    border:1px solid #ddd;
+    font-size:16px;
+    background:white;
+}
+
+/* 事件結束時間 */
+.schedule_item_endData{
+    /*width:15%;*/
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    min-width:100px;
+    min-height:50px;
+    padding:6px;
+    border-radius:6px;
+    border:1px solid #ddd;
+    font-size:16px;
+    background:white;
+}
+
+/* 事件內容 */
+.schedule_item_event{
+    width:45%;
+    min-height:50px;
+    padding:6px;
+    border-radius:6px;
+    border:1px solid #ddd;
+    font-size:16px;
+    background:white;
+
+    white-space: pre-wrap; /*保留換行*/
+}
+
+
+
+/* 刪除事件 */
+.schedule_item_delete_button{
+    width:28px;
+    height:28px;
+    background:#ff4d4d;
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:6px;
+    cursor:pointer;
+    font-size:14px;
+}
+
+.schedule_item_delete_button:hover{
+    background:#ff0000;
+}
+
+/* 修改事件 */
+.schedule_item_modify_button{
+    width:28px;
+    height:28px;
+    background:#4d79ff;
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:6px;
+    cursor:pointer;
+    font-size:14px;
+}
+
+.schedule_item_modify_button:hover{
+    background:#0052cc;
+}
+
+/* 完成事件 */
+.schedule_item_complete_button{
+    width:28px;
+    height:28px;
+    background:#28a745;
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:6px;
+    cursor:pointer;
+    font-size:14px;
+}
+
+.schedule_item_complete_button:hover{
+    background:#1e7e34;
+}
+
+
+
+
+
+
+
+
+/* 按鈕區 */
+.button_container{
+    display:flex;
+    gap:10px;
+    margin-top:15px;
+    padding:10px;
+}
+
+button{
+    padding:8px 16px;
+    border:none;
+    border-radius:6px;
+    background:#4c68af;
+    color:white;
+    cursor:pointer;
+    font-size:14px;
+}
+
+button:hover{
+    background:#3e4f8e;
+}
+
+
+
+/*遮罩*/
+#loadingOverlay{
+    position: fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background: rgba(0,0,0,0.3);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+}
+
+/*儲存載入時轉圈*/
+.spinner{
+    width:50px;
+    height:50px;
+    border:6px solid #ddd;
+    border-top:6px solid #3498db;
+    border-radius:50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin{
+    0%{ transform: rotate(0deg); }
+    100%{ transform: rotate(360deg); }
+}
+
+
+/* 時間顯示 */
+.time_display{
+    display:flex;
+    justify-content:flex-end;
+    font-size:20px;
+    padding:8px;
+    margin-bottom:10px;
+}
+
+
+/*新增事件視窗*/
+.modal{
+    display:none;
+    position:fixed;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.4);
+    /*
+    justify-content:center;
+    align-items:center;
+    */
+}
+
+.modal_content{
+    background:white;
+    padding:20px;
+    width:300px;
+    /*
+    border-radius:10px;
+    */
+}
+
+.modal_content input{
+    width:100%;
+    max-width: 100%; 
+    margin-bottom:10px;
+    padding:5px;
+    box-sizing: border-box;
+}
+
+.modal_buttons{
+    display:flex;
+    justify-content:space-between;
+}
+
+.modal_content textarea {
+    width: 100%;          /* 佔滿父容器寬度 */
+    max-width: 100%;      /* 不超過父容器 */
+    box-sizing: border-box; /* 包含 padding & border 在寬度內 */
+    resize: vertical;     /* 只允許垂直調整大小 */
+}
+
+
+/*日曆*/
+#calendar{
+    width: 40%;
+    margin: 20px;
+}
